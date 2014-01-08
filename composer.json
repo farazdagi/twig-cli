@@ -1,0 +1,17 @@
+{
+    "name": "farazdagi/twig-cli",
+    "description": "Command line Twig processor",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Victor Farazdagi",
+            "email": "simple.square@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/console": "2.0.7",
+        "symfony/config": "2.0.7",
+        "twig/twig": "1.6.5"
+    }
+}
