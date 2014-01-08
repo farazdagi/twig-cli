@@ -1,2 +1,4 @@
 vendor/**
 composer.phar
+workspace.xml
+tasks.xml
