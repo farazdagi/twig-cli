@@ -40,6 +40,7 @@ class Compile extends Command
         $twig = new \Twig_Environment($loader, array(
             'cache' => false,
             'debug' => true,
+            'autoescape' => false,
         ));
 
         $output->writeln(
