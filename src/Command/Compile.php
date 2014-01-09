@@ -24,7 +24,9 @@ class Compile extends Command
             ->addOption(
                 'base-dir', null, InputOption::VALUE_REQUIRED, 'Base directory where templates are stored'
             )
-        ;
+            ->addOption(
+                'write-output', false, InputOption::VALUE_NONE, 'Do we need to write output to "[file].html"?'
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -43,11 +45,13 @@ class Compile extends Command
             'autoescape' => false,
         ));
 
-        $output->writeln(
-            $twig->render(
-                $file,
-                array('foo' => 'bar')
-            )
-        );
+        $rendered = $twig->render($file, array());
+        if ($input->getOption('write-output')) {
+            $outputFile = dirname($baseDir . '/' . $file) . '/' . basename($file, '.twig') . '.html';
+            file_put_contents($outputFile, $rendered);
+        } else {
+            $output->writeln($rendered);
+        }
+
     }
 }
